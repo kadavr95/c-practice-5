@@ -1,29 +1,33 @@
 #include <stdio.h>
 #include <limits.h>
 #include <math.h>
-#include <float.h>
 
 int main(void){
-  long double s=0.0,scor=0.0,cor=0.0,fcor,f,s2=0.0,ss;
-  int n1=100,n2=500,n3=1000,i,ii=-1;
-  printf("Exercise 5. Variant 7\n\n");
+  double s=0.0,scor=0.0,cor=0.0,fcor,f,s2=0.0;
+  int n1=1,n2=5,n3=10,i;
+  printf("Lab 5. Variant 3\n\n");
   for (i=1; i <= n3 ; i++) {
+	if ((i==n1) || (i==n2) || (i==n3)) {
+	  printf("Number:       %d\n",i);
+	  printf("No correction:%.30e\n",s2);
+	  printf("Correction:   %.30e\n",s);
+	  if ((s2-s)>0)
+		printf("Comparison:   Sum with no correction is bigger than sum with correction\n");
+	  if ((s2-s)<0) {
+		printf("Comparison:   Sum with correction is bigger than sum with no correction\n");
+	  }
+	  if ((s2-s)==0) {
+		printf("Comparison:   Sum with no correction is equal to sum with correction\n");
+	  }
+	  printf("Difference:   %.30e\n\n",fabs(s2-s));
+	}
 	f=((2*i-1)/(pow(2,i)));
 	fcor=f-cor;
 	scor=s+fcor;
 	cor=(scor-s)-fcor;
 	s=scor;
 	s2=s2+f;
-	if ((i==n1) || (i==n2) || (i==n3)) {
-	  printf("Number:       %d\n",i);
-	  printf("Sum:          %.30Lf\n\n",s);
-
-	}
-	if (((3-s2)<0.001)&&(ii<0) ){
-	  ii=i;
-	}
   }
-  printf("Minimal No:   %d\n\n",ii);
   printf("Dimini Inc.\n");
   printf("For progressive future\n");
   printf("(c)2009-2012\n");
